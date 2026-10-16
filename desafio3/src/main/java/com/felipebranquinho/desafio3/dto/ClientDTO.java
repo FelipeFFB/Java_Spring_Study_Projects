@@ -12,16 +12,22 @@ public class ClientDTO {
 
     private String cpf;
 
+    private Double income;
+
     private LocalDate birthDate;
+
+    private Integer children;
 
     public ClientDTO(){
     }
 
-    public ClientDTO(Long id, String name, String cpf, LocalDate birthDate) {
+    public ClientDTO(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
+        this.income = income;
         this.birthDate = birthDate;
+        this.children = children;
     }
 
     public ClientDTO(Client client) {
@@ -29,6 +35,8 @@ public class ClientDTO {
         name = client.getName();
         cpf = client.getCpf();
         birthDate = client.getBirthDate();
+        income = client.getIncome();
+        children = client.getChildren();
     }
 
     public Long getId() {
@@ -45,5 +53,13 @@ public class ClientDTO {
 
     public LocalDate getBirthDate() {
         return birthDate;
+    }
+
+    public Double getIncome() {
+        return income;
+    }
+
+    public Integer getChildren() {
+        return children;
     }
 }
