@@ -1,6 +1,8 @@
 package com.felipebranquinho.desafio3.dto;
 
 import com.felipebranquinho.desafio3.entities.Client;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
 
 import java.time.LocalDate;
 
@@ -8,12 +10,14 @@ public class ClientDTO {
 
     private Long id;
 
+    @NotBlank(message = "O campo nome não pode ficar vazio")
     private String name;
 
     private String cpf;
 
     private Double income;
 
+    @PastOrPresent(message = "Datas futuras não são válidas para data de nascimento")
     private LocalDate birthDate;
 
     private Integer children;
