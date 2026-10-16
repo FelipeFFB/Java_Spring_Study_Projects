@@ -3,6 +3,7 @@ package com.felipebranquinho.desafio3.services;
 import com.felipebranquinho.desafio3.dto.ClientDTO;
 import com.felipebranquinho.desafio3.entities.Client;
 import com.felipebranquinho.desafio3.repositories.ClientRepository;
+import com.felipebranquinho.desafio3.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,7 +19,8 @@ public class ClientService {
     @Transactional(readOnly = true)
     public ClientDTO findById(Long id){
 
-        Client client = clientRepository.findById(id).get();
+        Client client = clientRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Recurso não encontrado"));
         return new ClientDTO(client);
 
     }
